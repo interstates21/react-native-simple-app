@@ -1,6 +1,7 @@
-import {path} from './constants'
+import { defaultPath } from './constants'
+import { EmptyRequest } from './request'
 
-export const postData = (data, url) => {
+export const postData = (data, url, path = defaultPath) => {
     const headers = {
         "Content-Type": "application/json"
     }
@@ -9,7 +10,7 @@ export const postData = (data, url) => {
         headers: headers,
         body: JSON.stringify(data)
     });
-    
-    return NoJSONRequest(request);
+
+    return EmptyRequest(request);
 };
 

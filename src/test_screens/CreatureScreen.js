@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, ScrollView, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { getCreatureRequest } from '../store/actions/test.actions'
 
@@ -13,17 +13,14 @@ const CreatureScreen = (props) => {
     )
     console.log("props = ", props);
     return (
-        <View
+        <ScrollView
             style={{
                 flex: 1,
                 backgroundColor: 'purple',
-                color: 'white',
-                alignItems: 'center',
-                justifyContent: 'space-around'
             }}>
             {props.test.message ?
-                <Text>
-                    {props.test.message.classification}
+                <Text style={{ color: 'white', fontSize: 30 }}>
+                    {Object.values(props.test.message)}
                 </Text> : null
             }
             <TouchableOpacity
@@ -32,6 +29,7 @@ const CreatureScreen = (props) => {
                     height: 50,
                     padding: 10,
                     borderRadius: 10,
+                    margin: 'auto',
                     backgroundColor: 'white',
                     color: 'purple',
                     alignItems: 'center',
@@ -43,7 +41,7 @@ const CreatureScreen = (props) => {
                     Click ME!
                 </Text>
             </TouchableOpacity >
-        </View >
+        </ScrollView >
     )
 }
 
