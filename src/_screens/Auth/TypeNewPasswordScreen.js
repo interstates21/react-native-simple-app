@@ -1,0 +1,86 @@
+import React, { Component } from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Platform
+} from 'react-native';
+
+import MyLineInput from '../../_components/MyLineInput';
+import MyButton from '../../_components/MyButton';
+import Logo from '../../_layout/Logo'
+
+import { Margin } from '../../styles/styledComponents'
+import { bluePrimary } from '../../styles/constants';
+
+
+
+export default class TypeEmailScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: {},
+      email: '',
+      password: '',
+      err: ''
+    };
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.logoContainer}>
+          <Logo />
+        </View>
+        <View style={styles.inputGroup}>
+          <Text style={styles.title}> Type your new password. </Text>
+          <Br />
+          <MyLineInput
+            placeholder='Password'
+            type='password'
+          // onChangeText={e => this.setState({ email: e })}
+          />
+        </View>
+
+        <View style={styles.inputGroup}>
+          <Text style={styles.title}> Repeat your new password. </Text>
+          <Br />
+          <MyLineInput
+            placeholder='Repeat Password'
+            type='repeat'
+          // onChangeText={e => this.setState({ email: e })}
+          />
+        </View>
+        <MyButton
+          title='Send'
+          onPress={() => {
+            this.props.navigation.navigate('HomeTab')
+          }}
+        />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  title: {
+    color: bluePrimary,
+    textAlign: 'center',
+    fontSize: 20
+  },
+  content: {
+
+  },
+  inputGroup: {
+  },
+  logoContainer: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
